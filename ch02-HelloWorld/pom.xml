@@ -3,4 +3,13 @@
   <groupId>com.ayulit</groupId>
   <artifactId>ch02-helloworld</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+    <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>4.3.4.RELEASE</version>
+    </dependency>  
+  </dependencies>
+  
 </project>

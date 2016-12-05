@@ -1,5 +1,6 @@
 package com.apress.prospring4.ch3.annotation;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.apress.prospring.ch3.MessageRenderer;
 import com.apress.prospring.ch3.MessageProvider;
@@ -20,6 +21,7 @@ public class StandartOutMessageRenderer implements MessageRenderer {
 
 	}
 
+	@Autowired
 	public void setMessageProvider(MessageProvider provider) {
 		this.messageProvider = provider;
 	}

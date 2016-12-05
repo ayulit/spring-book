@@ -8,7 +8,7 @@ public class DeclareSpringComponents {
 
 		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
 		
-		ctx.load("META-INF/spring/app-context-xml.xml");
+		ctx.load("META-INF/spring/app-context-annotation.xml");
 		ctx.refresh();
 		
 		MessageRenderer messageRenderer = ctx.getBean("messageRenderer",

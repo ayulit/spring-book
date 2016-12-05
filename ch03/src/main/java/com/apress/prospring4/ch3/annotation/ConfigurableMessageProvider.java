@@ -12,8 +12,7 @@ public class ConfigurableMessageProvider implements MessageProvider {
 	private String message;
 	
 	@Autowired
-	public ConfigurableMessageProvider(@Value("Configurable message annot")
-			String message) {
+	public ConfigurableMessageProvider(String message) {
 		this.message = message;
 	}
 	

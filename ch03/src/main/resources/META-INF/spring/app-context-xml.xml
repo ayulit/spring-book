@@ -12,6 +12,8 @@
 	 		p:messageProvider-ref="messageProvider"/>	 		
 
 	<bean id="messageProvider"
-	 		class="com.apress.prospring4.ch3.xml.HelloWorldMessageProvider"/>
+	 		class="com.apress.prospring4.ch3.xml.ConfigurableMessageProvider">
+	 		<constructor-arg value="Configurable message"/>
+	</bean>
 	
 </beans>

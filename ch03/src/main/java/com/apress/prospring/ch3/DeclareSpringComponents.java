@@ -11,10 +11,10 @@ public class DeclareSpringComponents {
 		ctx.load("META-INF/spring/app-context-xml.xml");
 		ctx.refresh();
 		
-		MessageProvider messageProvider = ctx.getBean("messageProvider", 
-				MessageProvider.class);
+		MessageRenderer messageRenderer = ctx.getBean("messageRenderer",
+				MessageRenderer.class);
 		
-		System.out.println(messageProvider.getMessage());
+		messageRenderer.render();
 		
 
 	}

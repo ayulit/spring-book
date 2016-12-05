@@ -4,9 +4,6 @@
 		
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
-	<bean id="messageRenderer" 
-			class="com.apress.prospring.ch3.StandartOutMessageRenderer"/>
 		
 	<bean id="messageProvider"
 	 		class="com.apress.prospring.ch3.HelloWorldMessageProvider"/>

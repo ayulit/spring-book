@@ -3,9 +3,31 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	
 	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
 			
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- this bean gets ref to bean in parent context, becase it's only there -->
+	<bean id="target1" class="com.apress.prospring.ch3.SimpleTarget"
+	 		p:val-ref="injectBeanParent"/>
+	 			
+	<!-- this bean gets ref to bean in THIS context, because it's closer -->
+	<bean id="target2" class="com.apress.prospring.ch3.SimpleTarget"
+		 	p:val-ref="injectBean"/>
+		 	
+	<!-- bean "injectBean" in child context ignored, because of "parent" descriptor --> 
+	<bean id="target3" class="com.apress.prospring.ch3.SimpleTarget">
+		<property name="val">
+			<!-- "parent" means from parent xml --> 
+			<ref parent="injectBean"/>
+		</property>
+	</bean>
+	
+	<!-- like the one in parent context, but another value -->
+	<bean id="injectBean" class="java.lang.String" c:_0="Bean in Child"/>
+
+<!-- ************ ELDER EXAMPLES BELOW ************** -->
 
 	<bean id="oracle"
 	 		name="wiseworm" class="com.apress.prospring.ch3.BookwormOracle"/>
@@ -15,9 +37,6 @@
 			<ref bean="wiseworm"/>
 		</property>
 	</bean>
-
-
-	<!-- ************ ELDER EXAMPLES BELOW ************** -->
 
     <!-- defining base bin -->
 	<bean id="injectSimpleConfig"

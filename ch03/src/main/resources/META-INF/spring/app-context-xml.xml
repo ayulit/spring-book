@@ -8,21 +8,24 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="helper"
-	 		class="com.apress.prospring.ch3.MyHelper" scope="prototype"/>
+	<!-- bean-implementation of MethodReplacer IF -->
+	<bean id="methodReplacer"
+	 		class="com.apress.prospring.ch3.FormatMessageReplacer"/>
 
-	<bean id="abstractLookupBean"
-		class="com.apress.prospring.ch3.AbstractLookupDemoBean">
-			<!-- lookup method config -->
-			<lookup-method name="getMyHelper" bean="helper"/>	
+	<!-- 3d party class -->
+	<bean id="replacementTarget"
+		class="com.apress.prospring.ch3.ReplacementTarget">
+			<replaced-method name="formatMessage" replacer="methodReplacer">
+                <!-- this descriptor needs for concrete signature point,
+				if there are a plenty overloaded methods in 3d party class -->
+				<arg-type>String</arg-type>
+			</replaced-method>	
 	</bean>
 	
-	<bean id="standartLookupBean"
-		class="com.apress.prospring.ch3.StandartLookupDemoBean">
-			<property name="myHelper">
-				<ref bean="helper"/>
-			</property>	
-	</bean>
+	<!-- for using standart method of 3d party class (w/o substitution) -->
+	<bean id="standartTarget"
+		class="com.apress.prospring.ch3.ReplacementTarget"/>
+
 		 			
 </beans>
 

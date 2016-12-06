@@ -18,7 +18,7 @@
 	 		
 	<bean id="constructorConfusion"
 	 		class="com.apress.prospring4.ch3.xml.ConstructorConfusion">
-	 		<constructor-arg>
+	 		<constructor-arg type="int">
 	 			<value>90</value>
 	 		</constructor-arg>
 	</bean>		 			

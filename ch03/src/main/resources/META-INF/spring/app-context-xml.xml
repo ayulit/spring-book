@@ -12,7 +12,7 @@
 	 		
 	<bean id="injectRef" class="com.apress.prospring4.ch3.xml.InjectRef">
 		<property name="oracle">
-			<ref bean="oracle"/>
+			<ref bean="wiseworm"/>
 		</property>
 	</bean>
 

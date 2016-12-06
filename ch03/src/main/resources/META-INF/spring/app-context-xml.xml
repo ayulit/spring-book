@@ -8,20 +8,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="messageRenderer"
-	 		class="com.apress.prospring4.ch3.xml.StandartOutMessageRenderer"
-	 		p:messageProvider-ref="messageProvider"/>	 		
+	<bean id="injectSimple"
+	 		class="com.apress.prospring4.ch3.xml.InjectSimple"
+	 		p:name="Chris Schaefer"
+	 		p:age="32"
+	 		p:height="1.778"
+	 		p:programmer="true"
+	 		p:ageInSeconds="1009843200"/>	 		
 
-	<bean id="messageProvider"
-	 		class="com.apress.prospring4.ch3.xml.ConfigurableMessageProvider"
-	 		c:message = "This is а configurable message" />
-	 		
-	<bean id="constructorConfusion"
-	 		class="com.apress.prospring4.ch3.xml.ConstructorConfusion">
-	 		<constructor-arg type="int">
-	 			<value>90</value>
-	 		</constructor-arg>
-	</bean>		 			
+	 			
 </beans>
 
 

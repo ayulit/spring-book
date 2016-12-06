@@ -14,7 +14,14 @@
 
 	<bean id="messageProvider"
 	 		class="com.apress.prospring4.ch3.xml.ConfigurableMessageProvider"
-	 		c:message = "This is а configurable message" />	
+	 		c:message = "This is а configurable message" />
+	 		
+	<bean id="constructorConfusion"
+	 		class="com.apress.prospring4.ch3.xml.ConstructorConfusion">
+	 		<constructor-arg>
+	 			<value>90</value>
+	 		</constructor-arg>
+	</bean>		 			
 </beans>
 
 

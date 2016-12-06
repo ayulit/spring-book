@@ -17,7 +17,7 @@ public class ConstructorConfusion {
 	}
 	
 	@Autowired
-	public ConstructorConfusion(@Value("90")
+	public ConstructorConfusion(
 			int someValue) {
 		System.out.println("ConstructorConfusion(int) called");
 		this.someValue = "Number: " + Integer.toString(someValue);

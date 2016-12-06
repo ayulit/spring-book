@@ -16,5 +16,12 @@
 		
 	<!-- setting value for constructor injection using annotations -->
 	<bean id="message" class="java.lang.String"
-			c:_0="This is configurable message"/>	
+			c:_0="This is configurable message"/>
+			
+	<bean id="someValue" class="java.lang.String"
+			c:_0="Ninety"/>
+
+	<bean id="someValue int" class="java.lang.Integer"
+			c:_0="90"/>
+							
 </beans>

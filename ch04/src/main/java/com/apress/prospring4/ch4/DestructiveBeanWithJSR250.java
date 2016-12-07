@@ -49,15 +49,12 @@ public class DestructiveBeanWithJSR250 implements InitializingBean, DisposableBe
 	public static void main(String[] args) {
 		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
 		ctx.load("META-INF/spring/app-context-xml.xml");
+		
+		ctx.registerShutdownHook(); // hook!
+		
 		ctx.refresh();
 		
 		DestructiveBeanWithJSR250 bean = (DestructiveBeanWithJSR250) ctx.getBean("destructiveBean");
-		
-		System.out.println("Calling destroy() method");
-		
-		ctx.destroy(); // this is context destroy, NOT bean!
-		
-		System.out.println("Method destroy() has been called");
 
 	}
 

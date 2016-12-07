@@ -11,16 +11,16 @@
 
 
 	<bean id="simpleBean1" 
-		class="com.apress.prospring4.ch4.SimpleBean" 
-		init-method="init" p:name="Chris Scaefer" p:age="32"/>
+		class="com.apress.prospring4.ch4.SimpleBeanWithInterface" 
+		p:name="Chris Scaefer" p:age="32"/>
 
 	<bean id="simpleBean2" 
-		class="com.apress.prospring4.ch4.SimpleBean" 
-		init-method="init" p:age="32"/>
+		class="com.apress.prospring4.ch4.SimpleBeanWithInterface" 
+		p:age="32"/>
 
 	<bean id="simpleBean3" 
-		class="com.apress.prospring4.ch4.SimpleBean" 
-		init-method="init" p:name="Chris Scaefer"/>
+		class="com.apress.prospring4.ch4.SimpleBeanWithInterface" 
+		p:name="Chris Scaefer"/>
 		 			
 </beans>
 

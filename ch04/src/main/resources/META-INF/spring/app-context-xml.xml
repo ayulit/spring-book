@@ -9,8 +9,8 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<bean id="destructiveBean" 
-		class="com.apress.prospring4.ch4.DestructiveBean" 
-		destroy-method="destroy"
+		class="com.apress.prospring4.ch4.DestructiveBeanWithInterface" 
+		
 		p:filePath="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}}test.txt"/>
 		<!-- in p:filepath attribute used SpEL to define file to create -->
 			 			

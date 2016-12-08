@@ -8,16 +8,28 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		">
-		
-	<bean id="shaDigest" 
-		class="com.apress.prospring4.ch4.MessageDigestFactoryBean"
+	
+	<!-- here we've got 2 beans  MessageDigestFactory -->
+	<bean id="shaDigestFactory" 
+		class="com.apress.prospring4.ch4.MessageDigestFactory"
 		p:algorithmName="SHA1"
 		/>
 
-	<bean id="defaultDigest" 
-		class="com.apress.prospring4.ch4.MessageDigestFactoryBean"
+	<bean id="defaultDigestFactory" 
+		class="com.apress.prospring4.ch4.MessageDigestFactory"
 		/>
 		<!-- MD5 by default -->
+
+	<!-- here we ask Spring to create objects with appropriate Factory -->
+	<bean id="shaDigest"
+	 	factory-bean="shaDigestFactory"
+	 	factory-method="createInstance">
+	</bean>
+	
+	<bean id="defaultDigest"
+	 	factory-bean="defaultDigestFactory"
+	 	factory-method="createInstance">
+	</bean>
 		
 	<bean id="digester" 
 		class="com.apress.prospring4.ch4.MessageDigester"

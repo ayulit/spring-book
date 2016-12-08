@@ -2,15 +2,17 @@ package com.apress.prospring4.ch4;
 
 import java.io.File;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-public class DestructiveBeanWithInterface implements InitializingBean, DisposableBean {
+public class DestructiveBeanWithInterface {
 	
 	private File file;
 	private String filePath;
 
+	@PostConstruct
 	public void afterPropertiesSet() throws Exception {
 		System.out.println("Initializing Bean");
 		
@@ -26,6 +28,7 @@ public class DestructiveBeanWithInterface implements InitializingBean, Disposabl
 
 	}
 
+	@PreDestroy
 	public void destroy() {
 		System.out.println("Destroying Bean");
 		
@@ -43,16 +46,11 @@ public class DestructiveBeanWithInterface implements InitializingBean, Disposabl
 	
 	public static void main(String[] args) {
 		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-		ctx.load("META-INF/spring/app-context-xml.xml");
+		ctx.load("META-INF/spring/app-context-annotation.xml");
+		ctx.registerShutdownHook();
 		ctx.refresh();
 		
 		DestructiveBeanWithInterface bean = (DestructiveBeanWithInterface) ctx.getBean("destructiveBean");
-		
-		System.out.println("Calling destroy() method");
-		
-		ctx.destroy(); // this is context destroy, NOT bean!
-		
-		System.out.println("Method destroy() has been called");
 
 	}
 

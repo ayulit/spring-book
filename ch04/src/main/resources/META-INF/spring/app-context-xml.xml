@@ -2,16 +2,29 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-			
+
+	xmlns:p="http://www.springframework.org/schema/p"
+
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		">
 		
-	<bean id="beanNamePrinter" 
-		class="com.apress.prospring4.ch4.BeanNamePrinter"
+	<bean id="shaDigest" 
+		class="com.apress.prospring4.ch4.MessageDigestFactoryBean"
+		p:algorithmName="SHA1"
 		/>
 
-			 			
+	<bean id="defaultDigest" 
+		class="com.apress.prospring4.ch4.MessageDigestFactoryBean"
+		/>
+		<!-- MD5 by default -->
+		
+	<bean id="digester" 
+		class="com.apress.prospring4.ch4.MessageDigester"
+		p:digest1-ref="shaDigest"
+		p:digest2-ref="defaultDigest"
+		/>
+					 			
 </beans>
 
 

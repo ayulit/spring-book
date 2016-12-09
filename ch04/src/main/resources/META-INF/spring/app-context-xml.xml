@@ -4,49 +4,27 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
 	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:util="http://www.springframework.org/schema/util"
 
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/util
-		http://www.springframework.org/schema/util/spring-util.xsd
 		">
 	
-	<bean id="builtInSample" class="com.apress.prospring4.ch4.PropertyEditorBean"
-		p:bytes="Hello World"
-		p:cls="java.lang.String"		
-		p:trueOrFalse="true"
-		p:stringList-ref="stringList"
-		p:date="12/08/16"
-		p:floatValue="123.45678"
-		p:file="#{systemProperties['java.io.tmpdir']}
-		        #{systemProperties['file.separator']}test.txt"
-		p:stream="banana.txt"
-		p:locale="en_US"
-		p:pattern="a*b"
-		p:properties="name=Chris age=32"
-		p:trimString="     String needs trimming     "
-		p:url="http://www.yandex.ru"
-	/>
-	
-	<!-- here is ref for values from stringList -->
-	<util:list id="stringList">
-		<value>Tomato</value>
-		<value>Cabbage</value>
-	</util:list>
-	
-	<!-- for config realization of IF PropertyEditorRegistrar  -->
-	<bean id="customEditorConfigurer"
-		  class="org.springframework.beans.factory.config.CustomEditorConfigurer"
-		  p:propertyEditorRegistrars-ref="propertyEditorRegistrarsList"
-	/>
-	
-	<util:list id="propertyEditorRegistrarsList">
-	    <!-- using $ for static class access! -->
-		<bean class=
-			"com.apress.prospring4.ch4.PropertyEditorBean$CustomPropertyEditorRegistrar"/>
-	</util:list>
-	
+	<!-- registration of new Editor -->
+	<bean name="customEditorConfigurer"
+	      class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+	      <property name="customEditors">
+	      	<!-- type of property is map -->
+	      	<map>
+	      		<!-- setting up our custom editor -->
+	      		<entry key="com.apress.prospring4.ch4.Name"
+	      				value="com.apress.prospring4.ch4.NamePropertyEditor">
+	      		</entry>
+	      	</map>
+	      </property>
+    </bean>
+
+	<bean id="exampleBean" class="com.apress.prospring4.ch4.CustomEditorExample"
+		p:name="John Smith"/>	
 					 			
 </beans>
 

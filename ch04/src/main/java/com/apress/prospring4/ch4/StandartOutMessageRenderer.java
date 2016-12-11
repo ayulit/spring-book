@@ -1,8 +1,17 @@
 package com.apress.prospring4.ch4;
 
+
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
+
+@Named("messageRendererJSR330")
+@Singleton
 public class StandartOutMessageRenderer implements MessageRenderer {
 
-	private MessageProvider messageProvider;
+	@Inject
+	@Named("messageProviderJSR330")
+	private MessageProvider messageProvider = null;
 	
 	public void render() {
 		if (messageProvider == null) {

@@ -1,5 +1,9 @@
 package com.apress.prospring4.ch4;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
+@Named("messageProviderJSR330")
 public class ConfigurableMessageProvider implements MessageProvider {
 
 	private String message = "Default message";
@@ -8,6 +12,8 @@ public class ConfigurableMessageProvider implements MessageProvider {
 		
 	}
 
+	@Inject
+	@Named("messageJSR330")
 	public ConfigurableMessageProvider(String message) {
 		this.message = message;		
 	}
@@ -17,7 +23,6 @@ public class ConfigurableMessageProvider implements MessageProvider {
 	}
 	
 	public String getMessage() {
-		// TODO Auto-generated method stub
 		return message;
 	}
 

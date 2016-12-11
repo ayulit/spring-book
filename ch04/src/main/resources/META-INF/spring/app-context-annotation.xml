@@ -13,14 +13,10 @@
 		http://www.springframework.org/schema/context/spring-context.xsd		
 		">
 	
-	<context:annotation-config/>
-
-	<bean id="destructiveBean" 
-		class="com.apress.prospring4.ch4.DestructiveBeanWithInterface"
-		p:filePath="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}}test.txt"/>
-		<!-- in p:filepath attribute used SpEL to define file to create -->
+	<context:component-scan base-package="com.apress.prospring4.ch4"/>
 	
-	<bean id="shutdownHook"
-		class="com.apress.prospring4.ch4.ShutdownHookBean"/>
+	<bean id="messageJSR330" class="java.lang.String">
+		<constructor-arg value="You are running JSR330!"/>
+	</bean>
 							
 </beans>

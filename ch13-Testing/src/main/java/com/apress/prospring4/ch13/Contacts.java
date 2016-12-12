@@ -1,0 +1,28 @@
+package com.apress.prospring4.ch13;
+
+import java.io.Serializable;
+import java.util.List;
+
+// page 552
+public class Contacts implements Serializable {
+	
+	private List<Contact> contacts;
+
+	public Contacts() {
+	
+	}
+
+	public Contacts(List<Contact> contacts) {
+		this.contacts = contacts;
+	}
+	
+	public List<Contact> getContacts() {
+		return contacts;
+	}
+
+	public void setContacts(List<Contact> contacts) {
+		this.contacts = contacts;
+	}
+
+
+}
